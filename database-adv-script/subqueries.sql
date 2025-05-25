@@ -16,3 +16,20 @@ WHERE (
   FROM bookings b
   WHERE b.user_id = u.id
 ) > 3;
+-- INNER JOIN: bookings and users
+SELECT b.*, u.*
+FROM bookings b
+INNER JOIN users u ON b.user_id = u.id
+ORDER BY b.id;
+
+-- LEFT JOIN: properties and reviews
+SELECT p.*, r.*
+FROM properties p
+LEFT JOIN reviews r ON p.id = r.property_id
+ORDER BY p.id;
+
+-- FULL OUTER JOIN: users and bookings
+SELECT u.*, b.*
+FROM users u
+FULL OUTER JOIN bookings b ON u.id = b.user_id
+ORDER BY u.id;
