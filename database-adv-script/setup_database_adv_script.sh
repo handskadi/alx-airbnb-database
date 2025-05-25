@@ -1,10 +1,34 @@
 #!/bin/bash
 
-BASE_DIR=$(pwd)  # Automatically uses current dir (~/alx-2025/alx-airbnb-database/database-adv-script)
+BASE_DIR=$(pwd)
 
-echo "📦 Creating advanced SQL project files in $BASE_DIR..."
+echo "📦 Creating project files in $BASE_DIR..."
+
+# Project README
+cat > "$BASE_DIR/README.md" << 'EOF'
+# Unleashing Advanced Querying Power
+
+This project showcases advanced SQL techniques for the ALX Airbnb Database Module. It covers JOINs, subqueries, aggregations, indexing, performance optimization, and monitoring.
+
+Each SQL file corresponds to a task, with Markdown summaries explaining their objectives and findings.
+
+## Structure
+
+- joins_queries.sql
+- subqueries.sql
+- aggregations_and_window_functions.sql
+- database_index.sql
+- index_performance.md
+- perfomance.sql
+- optimization_report.md
+- partitioning.sql
+- partition_performance.md
+- performance_monitoring.md
+
+EOF
 
 # Task 0: Joins
+echo "# Task 0 – Write Complex Queries with Joins" > "$BASE_DIR/task_0_joins.md"
 cat > "$BASE_DIR/joins_queries.sql" << 'EOF'
 -- INNER JOIN: bookings and users
 SELECT b.*, u.*
@@ -23,6 +47,7 @@ FULL OUTER JOIN bookings b ON u.id = b.user_id;
 EOF
 
 # Task 1: Subqueries
+echo "# Task 1 – Practice Subqueries" > "$BASE_DIR/task_1_subqueries.md"
 cat > "$BASE_DIR/subqueries.sql" << 'EOF'
 -- Properties with avg rating > 4.0
 SELECT id, title
@@ -45,6 +70,7 @@ WHERE (
 EOF
 
 # Task 2: Aggregations & Window Functions
+echo "# Task 2 – Apply Aggregations and Window Functions" > "$BASE_DIR/task_2_aggregations.md"
 cat > "$BASE_DIR/aggregations_and_window_functions.sql" << 'EOF'
 -- Total bookings by user
 SELECT user_id, COUNT(*) AS total_bookings
@@ -59,6 +85,7 @@ GROUP BY property_id;
 EOF
 
 # Task 3: Indexing
+echo "# Task 3 – Implement Indexes for Optimization" > "$BASE_DIR/task_3_indexing.md"
 cat > "$BASE_DIR/database_index.sql" << 'EOF'
 -- Index commonly queried columns
 CREATE INDEX idx_user_id ON bookings(user_id);
@@ -82,6 +109,7 @@ Proper indexing improved performance drastically.
 EOF
 
 # Task 4: Query Optimization
+echo "# Task 4 – Optimize Complex Queries" > "$BASE_DIR/task_4_optimization.md"
 cat > "$BASE_DIR/perfomance.sql" << 'EOF'
 -- Original query
 SELECT b.*, u.first_name, p.title, pay.amount
@@ -106,6 +134,7 @@ Result:
 EOF
 
 # Task 5: Partitioning
+echo "# Task 5 – Partitioning Large Tables" > "$BASE_DIR/task_5_partitioning.md"
 cat > "$BASE_DIR/partitioning.sql" << 'EOF'
 -- Partition bookings table by start_date
 CREATE TABLE bookings_partitioned (
@@ -134,6 +163,7 @@ Date-based partitioning is effective for large booking datasets.
 EOF
 
 # Task 6: Performance Monitoring
+echo "# Task 6 – Monitor and Refine Database Performance" > "$BASE_DIR/task_6_monitoring.md"
 cat > "$BASE_DIR/performance_monitoring.md" << 'EOF'
 # Performance Monitoring Summary
 
@@ -154,4 +184,4 @@ After changes:
 - Query performance improved consistently by 60–80%
 EOF
 
-echo "✅ All required files created in $BASE_DIR."
+echo "✅ All SQL, README, and per-task documentation files created successfully."
